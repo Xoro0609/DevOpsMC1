@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deptest
+  labels:
+    app: deptest
+  namespace: namespace-workflow-1685312950679
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deptest
+  template:
+    metadata:
+      labels:
+        app: deptest
+    spec:
+      containers:
+        - name: deptest
+          image: acrworkflow1685312950679.azurecr.io/image-workflow-1685312950679:latest
+          ports:
+            - containerPort: 8000
